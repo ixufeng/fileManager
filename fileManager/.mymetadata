@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="fileManager"
+  id="myeclipse.1458095023678"
+  context-root="/fileManager"
+  j2ee-spec="5.0"
+  archive="fileManager.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
