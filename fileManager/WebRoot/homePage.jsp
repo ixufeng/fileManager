@@ -21,7 +21,7 @@ if(request.getParameter("currentPath")!=null){
 	ArrayList<Catalog> catalog = CatalogHelper.getCatalog(currentPath);
 	//获得用户当前所在文件夹下的所有文件
 	ArrayList<MyFile> fileList = SqlHelper.getSqlHelper().getAllFileByPath(currentPath);
-	//优化目标，将第一次从数据库得来的文件信息存入到本地数据库中；
+	//优化目标，将第一次从数据库得来的文件信息存入到本地数据库中;
 	
 %>
 
@@ -60,8 +60,8 @@ if(request.getParameter("currentPath")!=null){
 			<input id="search_key" />
 		</div>
 		<div id="user">
-			<span id="user_name">|*xufeng|</span>
-			<!-- <div id="user_box"></div> -->
+			<span id="user_name">userName</span>
+			<div id="user_box"></div>
 		</div>
 	</div>
 	<div id="fileMsg">
@@ -117,7 +117,9 @@ if(request.getParameter("currentPath")!=null){
 	</div>
 	<div id="con_cover">
 		<div id="new_file">
-			<input type="text" id="name" placeholder="文件名" />
+			<img onclick="cancelNewFile();" id="file_cancel" src="images/icon_cancel.png"/>
+			<span id="newfile_title">----新建文件</span>
+			<input type="text" id="name" placeholder="文件名" />			
 			<button id="file_confirm">确认</button>
 		</div>
 	</div>

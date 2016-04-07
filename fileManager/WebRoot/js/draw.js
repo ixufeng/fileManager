@@ -23,3 +23,33 @@ $("#MulDel").hover(function(){
 },function(){
 	$("#MulDel img").attr("src","./images/MulDel.png");
 });
+
+$(window).resize(function(){
+	
+	var _width = $(window).width();
+	
+	resizeWindow(_width);
+	
+});
+
+
+/**
+ * 对页面重新布局
+ */
+function resizeWindow(_width){
+	if(_width<900){
+		
+		$("#funcboard").css("display","none");
+		$("#file_content").css("width","100%");
+		$("#icon_search").css("display","none");
+		$("#menu_second").css("width","100%");
+	}else{
+		//大于800；
+		$("#funcboard").css("display","block");
+		$("#file_content").css("width","74%");
+		$("#icon_search").css("display","block");
+		$("#menu_second").css("width","74%");
+	}
+}
+
+

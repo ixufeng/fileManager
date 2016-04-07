@@ -18,7 +18,6 @@ function giveMsg(msg,width,height){
 
 		});
 	});
-
 }
 
 //弹出上传的border
@@ -134,10 +133,14 @@ function selectAll(){
 	showMulDo();
 } 
 
-
+/**
+ * 用户功能列表的弹出
+ */
 $("#user").hover(function(){
 	
 	$("#user_box").css("height","200px");
+},function(){
+	$("#user_box").css("height","0px");
 });
 
 
@@ -146,10 +149,32 @@ function showFileSendMenu(){
 	alert(fileNameList.length);
 }
 
+//初始化页面时进行判断
+(function(_width){
+	
+if(_width<900){
+		
+		$("#funcboard").css("display","none");
+		$("#file_content").css("width","100%");
+		$("#icon_search").css("display","none");
+		$("#menu_second").css("width","100%");
+	}else{
+		//大于800；
+		$("#funcboard").css("display","block");
+		$("#file_content").css("width","74%");
+		$("#icon_search").css("display","block");
+		$("#menu_second").css("width","74%");
+	}
+	
+})($(window).width());
 
-
-
-
+/**
+ * 取消文件新建文件
+ */
+function cancelNewFile(){
+	$("#new_file").css("display","none");
+	$("#con_cover").css("display","none");
+}
 
 
 

@@ -108,7 +108,7 @@ $("#file_confirm").click(function(){
 });
 
 /**
-*检测文件名的合法性；
+*	检测文件名的合法性；
 */
 function testFileName(){
 	return true;
