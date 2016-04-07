@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="74" key="DIALOG_Y_ORIGIN"/>
+		<item value="757" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="com.genuitec.eclipse.myeclipse"/>
+			<item value="com.genuitec.eclipse.myeclipse/org.eclipse.jpt.jaxb"/>
+		</list>
+	</section>
+	<section name="ShowViewDialog">
+		<item value="345" key="DIALOG_WIDTH"/>
+		<item value="org.eclipse.ui.console.ConsoleView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="227" key="DIALOG_Y_ORIGIN"/>
+		<item value="796" key="DIALOG_X_ORIGIN"/>
+		<item value="452" key="DIALOG_HEIGHT"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui"/>
+			<item value="com.genuitec.eclipse.views.myEclipseAJAXCategory"/>
+			<item value="com.genuitec.eclipse.views.myEclipseDBCategory"/>
+			<item value="org.eclipse.wst.xml"/>
+		</list>
+	</section>
+</section>

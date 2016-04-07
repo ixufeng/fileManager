@@ -1,0 +1,14 @@
+#Mon Mar 28 15:26:55 CST 2016
+myeclipseTomcatServer.fileManager.shouldOverwrite=false
+myeclipseTomcatServer.fileManager.deploymentPath=E\:\\javaProjects\\.metadata\\.me_tcat\\webapps\\fileManager
+myeclipseTomcatServer.fileManager.type=WebDeployment
+myeclipseTomcatServer.fileManager.IEARProjectName=
+myeclipseTomcatServer.fileManager.isExploded=true
+myeclipseTomcatServer.fileManager.altContextRoot=
+myeclipseTomcatServer.fileManager.isUptoDate=true
+myeclipseTomcatServer.fileManager.shouldBackup=true
+myeclipseTomcatServer.fileManager.isDeployed=true
+myeclipseTomcatServer.fileManager.noFileCopy=false
+myeclipseTomcatServer.fileManager.contextRoot=/fileManager
+eclipse.preferences.version=1
+myeclipseTomcatServer.fileManager.deployIsOverProject=false

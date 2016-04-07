@@ -1,0 +1,294 @@
+*{
+	
+	padding:0px ;
+	margin:0px;
+	border:0px;
+}
+body{
+	
+	width: 100%;
+	height: 100%;
+}
+#file_content{
+	display: block;
+	width: 74%;
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	top:90px;
+	margin-bottom:0px;
+
+}
+#file_ul_grid{
+	display: none;
+	min-height: 200px;
+	width: auto;
+	height: auto;
+	list-style-type: none;
+}
+#file_ul_grid>li{
+	float: left;
+	margin:10px;
+	width:80px;
+	height:80px;
+	text-align: center;
+	font-family: Arial;
+	cursor: pointer;
+	word-break:break-all;
+	font-size:12px;
+	padding-top:8px;
+	border:1px solid #fff;
+}
+
+#file_ul_grid>li:hover{
+
+	border:1px solid rgb(43,51,61);
+}
+
+#funcboard{
+	position:fixed;
+	width:26%;
+	right:0px;
+	top:50px;
+	bottom:0px;
+	background-color:rgb(43,51,61);
+	
+}
+
+#con_cover{
+	position: fixed;
+	top:60px;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+	display: none;
+	
+
+}
+
+#new_file{
+	opacity: 1;
+	height:120px;
+	width:300px;
+	position: absolute;
+	top:0px;
+	left: 0px;
+	border-radius: 10px;
+	background-color: rgb(0,180,0);
+	/*border:5px solid rgb(0,150,0);*/
+	box-shadow: 4px 4px 4px rgb(0,100,0);
+	display: none;
+}
+
+#new_file>input{
+	width:100%;
+	border:0px;
+	margin-top: 20px;
+	height: 30px;
+	background-color: rgb(180,180,180);
+	color: rgb(255,255,255);
+	color: rgb(0,122,0);
+	font-size: 20px;
+	font-weight: 800;
+	text-align: center;
+
+}
+
+::-webkit-input-placeholder {
+	color: rgba(0,122,0,0.5);
+	text-align: center;
+}
+#file_confirm{
+	border:0px;
+	width:100%;
+	height:30px;
+	margin-top: 20px;
+	background-color:rgb(180,180,180);
+	color: rgb(0,122,0);
+	font-size: 20px;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+#menu{
+	position: absolute;
+	top:300px;
+	left:300px;
+	width:90px;
+	height: auto;
+	background-color:rgb(0,160,0);
+	box-shadow: 4px 4px 4px rgb(0,100,0);
+	display: none;
+	cursor:pointer;
+	z-index:5;
+	
+}
+
+#menu>ul{
+	list-style-type: none;
+	height: auto;
+	min-height: 160px;
+}
+
+#menu>ul>li{
+
+	padding:0px;
+	width: 100%;
+	height:30px;
+	margin-bottom: 4px;
+	text-align: center;
+	line-height: 30px;
+	color: rgb(200,200,200);
+	font-family: arial;
+	font-weight: 800;
+	background-color: rgb(0,100,0);
+	cursor: pointer;
+}
+
+#menu>ul>li:hover{
+	opacity: 0.5;
+}
+
+#msg_con{
+	width : 0px;
+	height: 0px;
+	position: absolute;
+	top:0px;
+	left: 0px;
+	background-color: rgb(0,100,0);
+	border-radius: 10px;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+	z-index:10;
+}
+
+#msg_con p{
+	font-size: 20px;
+	font-weight: 900px;
+	font-family: arial;
+	color: #fff;
+	text-align: center;
+}
+#searchRes_con{
+	list-style-type:none;
+	
+		
+}
+#searchRes_con li{
+	width:95%;
+	height:40px;
+	background-color:rgb(200,200,200);
+	margin:2px auto;
+	cursor:pointer;
+	border-radius:5px;
+	animation:searchShow 1s;
+	color:#fff;
+	line-height:40px;
+}
+#searchRes_con li:hover{
+	
+	background-color:rgb(155,155,155);
+}
+
+
+
+@keyframes searchShow
+{
+	0% {opacity:0.3;}
+	100%{opacity:1;} 
+}
+#searchRes_con>li>img{
+	width:30px;
+	heigth:30px;
+	margin-left:5px;
+	vertical-align:middle;
+}
+#fileMsg{
+	
+	height:30px;
+	width:100%;
+	line-height:30px;
+	padding-left:20px;	
+}
+#file_catalog{
+	list-style:none;
+	
+}
+#file_catalog>li{
+	float:left;
+	width:auto;
+	height:30px;
+	font-weight:700;
+}
+#fileBar{
+	width:100%;
+	height:40px;
+	padding-top:8px;
+	padding-left:25px;
+	border-bottom:1px solid rgb(230,230,230);
+	border-top:1px solid rgb(230,230,230);
+	background-color:rgb(247,247,247);
+	
+}
+
+#fileBar label{
+	display:block;
+	float:left;
+	line-height:40px;
+	color:rgb(85,85,85);
+	font-family:Arial;
+	font-size:15px;
+}
+.MulDo{
+	border:1px solid rgb(167,167,167);
+	width:100px;
+	height:30px;
+	
+	margin-left:8px;
+	text-align:center;
+	border-radius:3px;
+}
+
+
+
+
+
+/* file_ul_list */
+#file_ul_list{
+	list-style:none;
+	display:none;
+	
+}
+#file_ul_list>li{
+	height:40px;
+	width:100%;
+	border-bottom:1px solid rgb(200,200,200);
+}
+#file_ul_list>li>p{
+	
+	display:inline-block;
+	line-height:40px;
+	margin-left:15px;
+}
+#file_ul_list>li>img{
+	display:block;
+	width:25px;
+	height:25px;
+	margin-left:15px;
+	float:left;
+	margin-top:7px;
+	vertical-align:middle;
+}
+.checkFile{
+	margin-top:15px;
+	margin-left:30px;
+	float:left;
+	background-color:#fff;
+}
+.fileCtime{
+	margin-right:10px;
+	float:right;
+	line-height:40px;
+}
