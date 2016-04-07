@@ -83,7 +83,7 @@ if(request.getParameter("currentPath")!=null){
 	ArrayList<Catalog> catalog = CatalogHelper.getCatalog(currentPath);
 	//获得用户当前所在文件夹下的所有文件
 	ArrayList<MyFile> fileList = SqlHelper.getSqlHelper().getAllFileByPath(currentPath);
-	//优化目标，将第一次从数据库得来的文件信息存入到本地数据库中；
+	//优化目标，将第一次从数据库得来的文件信息存入到本地数据库中;
 	
 
       out.write("\r\n");
@@ -125,8 +125,8 @@ if(request.getParameter("currentPath")!=null){
       out.write("\t\t\t<input id=\"search_key\" />\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"user\">\r\n");
-      out.write("\t\t\t<span id=\"user_name\">|*xufeng|</span>\r\n");
-      out.write("\t\t\t<!-- <div id=\"user_box\"></div> -->\r\n");
+      out.write("\t\t\t<span id=\"user_name\">userName</span>\r\n");
+      out.write("\t\t\t<div id=\"user_box\"></div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
       out.write("\t<div id=\"fileMsg\">\r\n");
@@ -304,7 +304,9 @@ if(request.getParameter("currentPath")!=null){
       out.write("\t</div>\r\n");
       out.write("\t<div id=\"con_cover\">\r\n");
       out.write("\t\t<div id=\"new_file\">\r\n");
-      out.write("\t\t\t<input type=\"text\" id=\"name\" placeholder=\"文件名\" />\r\n");
+      out.write("\t\t\t<img onclick=\"cancelNewFile();\" id=\"file_cancel\" src=\"images/icon_cancel.png\"/>\r\n");
+      out.write("\t\t\t<span id=\"newfile_title\">----新建文件</span>\r\n");
+      out.write("\t\t\t<input type=\"text\" id=\"name\" placeholder=\"文件名\" />\t\t\t\r\n");
       out.write("\t\t\t<button id=\"file_confirm\">确认</button>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");

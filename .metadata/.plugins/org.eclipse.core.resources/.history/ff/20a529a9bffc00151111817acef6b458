@@ -1,0 +1,174 @@
+<%@page import="org.apache.commons.fileupload.FileItem"%>
+<%@page import="file.MyFile"%>
+<%@page import="sql.SqlHelper"%>
+<%@page import="common.CatalogHelper" %>
+<%@page import="common.Catalog" %>
+<%@page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+String currentPath = "./home";
+if(request.getParameter("currentPath")!=null){
+
+	currentPath = request.getParameter("currentPath"); 
+}else if(request.getAttribute("currentPath")!=null){
+
+	currentPath = (String)request.getAttribute("currentPath"); 
+}
+	//获取路径列表
+	ArrayList<Catalog> catalog = CatalogHelper.getCatalog(currentPath);
+	//获得用户当前所在文件夹下的所有文件
+	ArrayList<MyFile> fileList = SqlHelper.getSqlHelper().getAllFileByPath(currentPath);
+	//优化目标，将第一次从数据库得来的文件信息存入到本地数据库中;
+	
+%>
+
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>在线文件管理器</title>
+	<link rel="stylesheet" type="text/css" href="css/style_checkbox.css" />
+	<link rel="stylesheet" type="text/css" href="css/title.css">
+	<link rel="stylesheet" type="text/css" href="css/file_con.css">
+	
+	<!-- 上传文件 -->
+	<link rel="stylesheet" href="css/zyUpload.css" type="text/css">
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/fileClass.js"></script>
+</head>
+
+<body>
+	<div id="head_nav">
+		<div id="icon_home" path=<%=currentPath %> class="head_menu">
+			logo
+		</div>
+		<div class="head_bar">memu1</div>
+		<div class="head_bar">menu2</div>
+		<div class="head_bar">menu3</div>
+		
+		<div id="icon_search">
+			<label onclick="searchHelper();">搜索</label>
+			<select id="selOption" onchange="searchTypeChange();">
+				<option value="fimeName">文件名</option>				
+				<option value="fileDate">上传日期</option>
+				<option value="fileContent">全文检索</option>
+			</select>
+			<input id="search_key" />
+		</div>
+		<div id="user">
+			<div id="user_name">|*xufeng|</div>
+			<div id="user_box"></div>
+		</div>
+	</div>
+	<div id="fileMsg">
+			<ul id="file_catalog">					
+				<c:forEach var="catalogItem" items="<%=catalog%>">
+					<li><a href="homePage.jsp?currentPath=${catalogItem.link}">${catalogItem.name}> </a></li>
+				</c:forEach>
+				
+			</ul>
+	</div>
+	<div id="fileBar">
+		
+		<input type="checkbox" id="checkbox_c1" isSel="0" onclick="selectAll();" class="chk_3" /><label for="checkbox_c1"></label>
+		<span id="functionBar">
+			<label>已选中<span id="fileSelected"></span>文件/文件夹</label>
+			<label id="MulShare" class="MulDo">分享</label>
+			<label id="MulDown" onclick="mulDown();" class="MulDo"><img src="./images/MulDown.png">下载</label>
+			<label id="MulDel" onclick="mulDel();" class="MulDo"><img src="./images/MulDel.png">删除</label>
+			<label id="MulCopy" class="MulDo">复制到</label>
+			<label id="MulTrans" onclick="showFileSendMenu();" class="MulDo">发送至</label>
+		</span>			
+	</div>
+	<div id='menu_second'>
+		<span onclick='showuploadBorder();'><img alt="上传文件" src="images/fileUpload.png">上传</span>
+		<span onclick='creatFileBorder("creatDir");'><img alt="新建文件夹" src ="images/newFile.png">新建文件夹</span>
+		<span><img alt="文件下载" src="images/fileDownload.png">离线下载</span>
+		<div id="sel_show_con">
+			<a id="sel_grid" href="javascript:changeShowFile(0);"><img src="./images/grid.png"></a>
+			<a id="sel_list" href="javascript:changeShowFile(1);"><img src="./images/list.png"></a>
+		</div>
+	</div>
+	<div id="file_content">
+		
+		<ul id="file_ul_grid">
+			<%=fileList.size()>0?"":"文件夹空空的，赶快上吧！" %>
+			<c:forEach var = "fileItem" items = "<%=fileList %>" >
+				<li class = "${fileItem.fileType=='floder'?'dir':'file'}" path = "${fileItem.fileLogicPath}" fileName = "${fileItem.fileRandomName} ">
+					<img src ='${fileItem.filePic}'/>
+					<p>${fileItem.fileName}</p>
+				</li>
+			</c:forEach>			 
+		</ul>
+		<ul id="file_ul_list">
+			<c:forEach var = "fileItem" items = "<%=fileList %>" >
+				<li class = "${fileItem.fileType=='floder'?'dir':'file'}" path = "${fileItem.fileLogicPath}" fileName = "${fileItem.fileRandomName} ">
+					<input class="checkFile" type="checkbox" />
+					<img src ='${fileItem.filePic}'/>
+					<p>${fileItem.fileName}</p>
+					<span class="fileCtime">${fileItem.fileCtime}</span>
+				</li>
+			</c:forEach>	
+		</ul>
+	</div>
+	<div id="con_cover">
+		<div id="new_file">
+			<img onclick="cancelNewFile();" id="file_cancel" src="images/icon_cancel.png"/>
+			<span id="newfile_title">----新建文件</span>
+			<input type="text" id="name" placeholder="文件名" />			
+			<button id="file_confirm">确认</button>
+		</div>
+	</div>
+	
+	<div id="menu">
+		<ul>
+
+
+		</ul>
+	</div>
+	<!--右侧的展示栏  -->
+	<div id="funcboard">
+		<ul id="searchRes_con">
+			
+		
+			
+		</ul>
+	</div>
+	<!-- 上传文件的border -->
+	<div id="demo" class="demo"></div>
+	<script type="text/javascript" src="js/file.handle.js"></script>
+	<script type="text/javascript" src="js/menu.func.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/draw.js"></script>
+	<!-- 引用核心层插件 -->
+	<script type="text/javascript" src="js/zyFile.js"></script>
+	<!-- 引用控制层插件 -->
+	<script type="text/javascript" src="js/zyUpload.js"></script>
+	<!-- 引用初始化JS -->
+	<script type="text/javascript" src="js/demo.js"></script>
+	<script type="text/javascript">
+	
+</script>
+<!-- 弹出的消息框 -->
+<div id='msg_con'></div>
+</body>
+<%
+	if(request.getAttribute("msg")!=null){
+	String msg = (String)request.getAttribute("msg");
+	out.print("<script type = 'text/javascript'>giveMsg('"+msg+"')</script>");
+}else if(request.getParameter("msg")!=null){
+
+	String msg = request.getParameter("msg");
+	
+	out.print("<script type = 'text/javascript'>giveMsg('"+msg+"')</script>");
+
+}
+
+	
+ %>
+</html>
