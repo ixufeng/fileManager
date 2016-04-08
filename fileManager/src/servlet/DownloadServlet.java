@@ -36,7 +36,9 @@ public class DownloadServlet extends HttpServlet {
 				String name= request.getParameter("file");
 				 //设置响应头，控制浏览器下载该文件
 		        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(name, "UTF-8"));
+				//response.setHeader("Content-Type","media");
 				String  filePath = PathConfig.UPLOAD_PATH +'/'+ name;
+				System.out.println(filePath);
 				File file=new File(filePath);
 				FileInputStream in=new FileInputStream(file);
 				OutputStream out=response.getOutputStream();
@@ -49,6 +51,7 @@ public class DownloadServlet extends HttpServlet {
 				in.close();
 				out.close();
 			}catch(IOException e){
+				e.printStackTrace();
 				System.out.println("文件下载出错");
 			}
 		}
