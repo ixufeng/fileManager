@@ -25,8 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <% SqlHelper sqlHelper = SqlHelper.getSqlHelper(); ArrayList<MyFile> list = sqlHelper.getAllFileByPath("./home"); 
-    	out.print(list.get(0).getFilePic());
-    %>
+   		
+   <video width="320" x-webkit-airplay="allow" height="240" src="download.do?file=IMG_0009.MOV" controls="controls">
+	  <source  type="video/mp4" />
+
+</video>
+   		
   </body>
 </html>

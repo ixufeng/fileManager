@@ -83,11 +83,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  </head>\r\n");
       out.write("  \r\n");
       out.write("  <body>\r\n");
-      out.write("    ");
- SqlHelper sqlHelper = SqlHelper.getSqlHelper(); ArrayList<MyFile> list = sqlHelper.getAllFileByPath("./home"); 
-    	out.print(list.get(0).getFilePic());
-    
+      out.write("   \t\t\r\n");
+      out.write("   <video width=\"320\" x-webkit-airplay=\"allow\" height=\"240\" src=\"download.do?file=IMG_0009.MOV\" controls=\"controls\">\r\n");
+      out.write("\t  <source  type=\"video/mp4\" />\r\n");
       out.write("\r\n");
+      out.write("</video>\r\n");
+      out.write("   \t\t\r\n");
       out.write("  </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
